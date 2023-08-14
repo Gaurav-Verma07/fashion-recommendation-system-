@@ -9,9 +9,9 @@ function App() {
 
   return (
     <>
-    <div>
-      <button type="button" onClick= {()=>{setSearchType('CHOICE')}} >Choose</button>
-      <button type="button" onClick= {()=>{setSearchType('PROMPT')}} >Prompt</button>
+    <div className="buttons">
+      <button className="chooseButton" type="button" onClick= {()=>{setSearchType('CHOICE')}} >Choose</button>
+      <button className="promptButton" type="button" onClick= {()=>{setSearchType('PROMPT')}} >Prompt</button>
     </div>
       { searchType==='CHOICE' && <ChoiceBased />}
       { searchType==='PROMPT' && <PromptBased/>}

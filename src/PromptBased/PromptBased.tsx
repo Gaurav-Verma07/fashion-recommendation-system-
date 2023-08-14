@@ -1,9 +1,10 @@
+import classes from "./promptBased.module.css"
+
 const PromptBased = () => {
   return (
     <section>
-      <textarea name="" id="" cols={30} rows={10}></textarea>
+      <textarea className={classes.textBox}  cols={30} rows={10} placeholder="Write some prompt for suggestions ..."></textarea>
     </section>
   );
 };
-
 export default PromptBased;
