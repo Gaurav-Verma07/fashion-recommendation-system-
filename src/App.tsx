@@ -14,7 +14,7 @@ function App() {
   });
 
   return (
-    <DataContext.Provider value={{data, setData}} >
+    <DataContext.Provider value={{ data, setData }}>
       <div>
         <button
           type="button"
@@ -35,7 +35,7 @@ function App() {
       </div>
       {searchType === "CHOICE" && <ChoiceBased />}
       {searchType === "PROMPT" && <PromptBased />}
-      <AllClothes />
+      {data.isSearched && <AllClothes />}
     </DataContext.Provider>
   );
 }
