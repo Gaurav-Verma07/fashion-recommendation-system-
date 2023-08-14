@@ -1,4 +1,6 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useContext } from "react";
+import DataContext from "../context/dataContext";
 
 const colors = ["pink", "Red", "Blue", "Green", "Purple"];
 const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
@@ -11,14 +13,27 @@ interface Choice {
 }
 
 const ChoiceBased = () => {
-  const [data, setData] = useState({
+  const [data, setSearchData] = useState<Choice>({
     color: "pink",
     brand: "H&M",
     type: "Jeans",
   });
 
-  const handleSearch = () => {
-    console.log({ data });
+  const { setData } = useContext(DataContext);
+
+  const handleSearch = async () => {
+    const res = fetch(`/`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        color: data.color,
+        brand: data.brand,
+        type: data.type,
+      }),
+    });
+    setData({ result: res, isSearched: true, isPrompt: true });
   };
 
   return (
@@ -26,7 +41,7 @@ const ChoiceBased = () => {
       <label>Color</label>
       <select
         onChange={(e: any) => {
-          setData((prev: Choice) => ({ ...prev, color: e.target.value }));
+          setSearchData((prev: Choice) => ({ ...prev, color: e.target.value }));
         }}
       >
         {colors.map((value, index) => (
@@ -38,7 +53,7 @@ const ChoiceBased = () => {
       <label>Brand</label>
       <select
         onChange={(e: any) => {
-          setData((prev: Choice) => ({ ...prev, brand: e.target.value }));
+          setSearchData((prev: Choice) => ({ ...prev, brand: e.target.value }));
         }}
       >
         {brands.map((value, index) => (
@@ -50,7 +65,7 @@ const ChoiceBased = () => {
       <label>Type</label>
       <select
         onChange={(e: any) => {
-          setData((prev: Choice) => ({ ...prev, type: e.target.value }));
+          setSearchData((prev: Choice) => ({ ...prev, type: e.target.value }));
         }}
       >
         {type.map((value, index) => (
