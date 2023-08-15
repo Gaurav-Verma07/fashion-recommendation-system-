@@ -39,8 +39,9 @@ const ChoiceBased = () => {
 
   return (
     <section>
-      <label>Color</label>
+      <label className={classes.color}>Color</label>
       <select
+        className={classes.colorSelection}
         onChange={(e: any) => {
           setSearchData((prev: Choice) => ({ ...prev, color: e.target.value }));
         }}
@@ -51,8 +52,9 @@ const ChoiceBased = () => {
           </option>
         ))}
       </select>
-      <label>Brand</label>
+      <label className={classes.brand}>Brand</label>
       <select
+        className={classes.brandSelection}
         onChange={(e: any) => {
           setSearchData((prev: Choice) => ({ ...prev, brand: e.target.value }));
         }}
@@ -63,8 +65,9 @@ const ChoiceBased = () => {
           </option>
         ))}
       </select>
-      <label>Type</label>
+      <label className={classes.type}>Type</label>
       <select
+        className={classes.typeSelection}
         onChange={(e: any) => {
           setSearchData((prev: Choice) => ({ ...prev, type: e.target.value }));
         }}

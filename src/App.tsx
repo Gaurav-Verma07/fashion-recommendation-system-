@@ -16,8 +16,9 @@ function App() {
   return (
 
     <DataContext.Provider value={{ data, setData }}>
-      <div>
+      <div className="buttons">
         <button
+          className="chooseButton"
           type="button"
           onClick={() => {
             setSearchType("CHOICE");
@@ -26,6 +27,7 @@ function App() {
           Choose
         </button>
         <button
+          className="promptButton"
           type="button"
           onClick={() => {
             setSearchType("PROMPT");

@@ -1,16 +1,21 @@
-.color ,.brand ,.type{
-    font-size: 30px;
-    font-weight: 600;
-    color: rgb(163, 163, 163);
-    font-family: 'Courier New', Courier, monospace;
-    margin: 3%;
+.color,
+.brand,
+.type {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(163, 163, 163);
+  font-family: "Courier New", Courier, monospace;
+  margin: 3%;
 }
 
-.colorSelection ,.brandSelection ,.typeSelection{
-    height: 40px;
-    width: 90px;
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 4px;
-    color: rgb(228, 226, 226);
+.colorSelection,
+.brandSelection,
+.typeSelection {
+  height: 40px;
+  width: 90px;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 4px;
+  color: rgb(228, 226, 226);
+  margin: 3%;
 }
