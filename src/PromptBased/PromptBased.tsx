@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useContext } from "react";
 import DataContext from "../context/dataContext";
+import classes from "./promptBased.module.css"
 
 const PromptBased = () => {
   const [prompt, setPrompt] = useState<string>("");
@@ -35,5 +36,4 @@ const PromptBased = () => {
     </section>
   );
 };
-
 export default PromptBased;

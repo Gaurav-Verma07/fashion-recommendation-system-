@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useContext } from "react";
 import DataContext from "../context/dataContext";
+import classes from "./choiceBased.module.css"
 
 const colors = ["pink", "Red", "Blue", "Green", "Purple"];
 const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
