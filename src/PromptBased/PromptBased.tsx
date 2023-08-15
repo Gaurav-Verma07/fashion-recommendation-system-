@@ -20,7 +20,7 @@ const PromptBased = () => {
   return (
     <section>
       <div>
-        <textarea
+        <textarea className={classes.textBox}
           onChange={(e: any) => {
             setPrompt(e.target.value);
           }}
@@ -29,7 +29,7 @@ const PromptBased = () => {
           cols={30}
           rows={10}
         ></textarea>
-        <button type="button" onClick={handleSearch}>
+        <button className={classes.searchButton} type="button" onClick={handleSearch}>
           Search
         </button>
       </div>
