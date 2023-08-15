@@ -21,6 +21,7 @@ const PromptBased = () => {
     <section>
       <div>
         <textarea className={classes.textBox}
+          placeholder="Write spme prompt for Suggestions ..."
           onChange={(e: any) => {
             setPrompt(e.target.value);
           }}
