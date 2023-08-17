@@ -41,12 +41,13 @@
   color: #888;
 }
 
-.buttons{
-  margin: 10%;
+.buttons {
+  margin: 5%;
 }
 
-.chooseButton ,.promptButton{
-  font-family: 'Courier New', Courier, monospace;
+.chooseButton,
+.promptButton {
+  font-family: "Courier New", Courier, monospace;
   margin: 2%;
   box-shadow: 0 0 20px 5px #afb0b1;
   font-size: 25px;
