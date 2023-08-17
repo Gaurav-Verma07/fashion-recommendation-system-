@@ -1,10 +1,11 @@
 .container {
+  margin: auto;
   display: flex;
   box-shadow: 0 0 5px 5px #afb0b1;
   justify-content: space-around;
   width: 1300px;
   height: 650px;
-  background-color: rgb(53, 53, 53);
+  background-color: rgb(27, 27, 27);
 }
 
 .prompt {
@@ -18,19 +19,12 @@
 
 .textBox {
   font-family: "Courier New", Courier, monospace;
-
   height: 300px;
-  width: 600px;
+  width: 400px;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 17px;
   padding: 2%;
   box-shadow: 0 0 1px 1px #afb0b1;
-  height: 265px;
-  width: 700px;
-  border-radius: 14px;
-  font-size: 25px;
-  padding: 2%;
-
 }
 
 .searchButton {
