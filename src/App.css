@@ -39,6 +39,14 @@
   color: #888;
 }
 
+.buttons {
+  margin: 5%;
+}
+
+.chooseButton,
+.promptButton {
+  font-family: "Courier New", Courier, monospace;
+
 .buttons{
   /* margin: 10%; */
 }
@@ -48,6 +56,9 @@
   position: relative;
   font-size: 25px;
   font-weight: 600;
+
+}
+
   border: 2px solid #646cff;
 }
 
