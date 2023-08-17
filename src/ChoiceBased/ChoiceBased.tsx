@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useContext } from "react";
 import DataContext from "../context/dataContext";
-import classes from "./choiceBased.module.css"
+import classes from "./choiceBased.module.css";
 
 const colors = ["pink", "Red", "Blue", "Green", "Purple"];
 const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
@@ -38,48 +38,66 @@ const ChoiceBased = () => {
   };
 
   return (
-    <section>
-      <label className={classes.color}>Color</label>
-      <select
-        className={classes.colorSelection}
-        onChange={(e: any) => {
-          setSearchData((prev: Choice) => ({ ...prev, color: e.target.value }));
-        }}
-      >
-        {colors.map((value, index) => (
-          <option key={value} value={value} selected={index === 0}>
-            {value}
-          </option>
-        ))}
-      </select>
-      <label className={classes.brand}>Brand</label>
-      <select
-        className={classes.brandSelection}
-        onChange={(e: any) => {
-          setSearchData((prev: Choice) => ({ ...prev, brand: e.target.value }));
-        }}
-      >
-        {brands.map((value, index) => (
-          <option value={value} key={value} selected={index === 0}>
-            {value}
-          </option>
-        ))}
-      </select>
-      <label className={classes.type}>Type</label>
-      <select
-        className={classes.typeSelection}
-        onChange={(e: any) => {
-          setSearchData((prev: Choice) => ({ ...prev, type: e.target.value }));
-        }}
-      >
-        {type.map((value, index) => (
-          <option value={value} key={value} selected={index === 0}>
-            {value}
-          </option>
-        ))}
-      </select>
+    <section >
+      <div  className={classes.main}>
+      <div className={classes.selectBlock} >
+        <label className={classes.color}>Color</label>
+        <br />
+        <select
+          className={classes.colorSelection}
+          onChange={(e: any) => {
+            setSearchData((prev: Choice) => ({
+              ...prev,
+              color: e.target.value,
+            }));
+          }}
+        >
+          {colors.map((value, index) => (
+            <option key={value} value={value} selected={index === 0}>
+              {value}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className={classes.selectBlock}>
+        <label className={classes.brand}>Brand</label>
+        <select
+          className={classes.brandSelection}
+          onChange={(e: any) => {
+            setSearchData((prev: Choice) => ({
+              ...prev,
+              brand: e.target.value,
+            }));
+          }}
+        >
+          {brands.map((value, index) => (
+            <option value={value} key={value} selected={index === 0}>
+              {value}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className={classes.selectBlock}>
+        <label className={classes.type}>Type</label>
+        <select
+          className={classes.typeSelection}
+          onChange={(e: any) => {
+            setSearchData((prev: Choice) => ({
+              ...prev,
+              type: e.target.value,
+            }));
+          }}
+        >
+          {type.map((value, index) => (
+            <option value={value} key={value} selected={index === 0}>
+              {value}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <button type="button" onClick={handleSearch}>
+      </div>
+      <button className={classes.searchbtn} type="button" onClick={handleSearch}>
         Search
       </button>
     </section>

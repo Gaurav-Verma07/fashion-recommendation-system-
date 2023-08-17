@@ -18,17 +18,26 @@
 
 .textBox {
   font-family: "Courier New", Courier, monospace;
+
   height: 300px;
   width: 600px;
   border-radius: 5px;
   font-size: 20px;
   padding: 2%;
   box-shadow: 0 0 1px 1px #afb0b1;
+  height: 265px;
+  width: 700px;
+  border-radius: 14px;
+  font-size: 25px;
+  padding: 2%;
+
 }
 
 .searchButton {
   font-family: "Courier New", Courier, monospace;
+
   box-shadow: 0 0 2px 2px #afb0b1;
+  margin: 2%;
   font-size: 25px;
   font-weight: 600;
   margin: 7%;
