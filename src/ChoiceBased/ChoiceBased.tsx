@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useContext } from "react";
-import DataContext from "../context/dataContext";
-import classes from "./choiceBased.module.css";
+import { useState, useContext } from 'react';
+import DataContext from '../context/dataContext';
+import classes from './choiceBased.module.css';
+import { Select, Button } from '@mantine/core';
 
-const colors = ["pink", "Red", "Blue", "Green", "Purple"];
-const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
-const type = ["Jeans", "Top", "Jewellary", "Shoes", "Goggles"];
+const colors = ['pink', 'Red', 'Blue', 'Green', 'Purple'];
+const brands = ['H&M', 'Gucci', 'Louis Vuitton', 'Prada', 'Balenciaga'];
+const type = ['Jeans', 'Top', 'Jewellary', 'Shoes', 'Goggles'];
 
 interface Choice {
   color: string;
@@ -14,92 +15,76 @@ interface Choice {
 }
 
 const ChoiceBased = () => {
-  const [data, setSearchData] = useState<Choice>({
-    color: "pink",
-    brand: "H&M",
-    type: "Jeans",
+  const [searchData, setSearchData] = useState<Choice>({
+    color: 'pink',
+    brand: 'H&M',
+    type: 'Jeans',
   });
 
   const { setData } = useContext(DataContext);
 
   const handleSearch = async () => {
+    console.log({searchData})
     const res = fetch(`/`, {
-      method: "post",
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        color: data.color,
-        brand: data.brand,
-        type: data.type,
+        color: searchData.color,
+        brand: searchData.brand,
+        type: searchData.type,
       }),
     });
     setData({ result: res, isSearched: true, isPrompt: true });
   };
 
   return (
-    <section >
-      <div  className={classes.main}>
-      <div className={classes.selectBlock} >
-        <label className={classes.color}>Color</label>
-        <br />
-        <select
-          className={classes.colorSelection}
-          onChange={(e: any) => {
-            setSearchData((prev: Choice) => ({
-              ...prev,
-              color: e.target.value,
-            }));
-          }}
-        >
-          {colors.map((value, index) => (
-            <option key={value} value={value} selected={index === 0}>
-              {value}
-            </option>
-          ))}
-        </select>
+    <section>
+        
+      <div className={classes.main}>
+        <div className={ classes.selBox} >
+          <Select
+          className= {classes.select}
+            label="Select Color"
+            onChange={(value: string) => {
+              setSearchData((prev: Choice) => ({
+                ...prev,
+                color: value,
+              }));
+            }}
+            value={searchData.color}
+            data={colors}
+          />
+          <Select
+          className= {classes.select}
+            label="Select Brand"
+            onChange={(value: string) => {
+              setSearchData((prev: Choice) => ({
+                ...prev,
+                brand: value,
+              }));
+            }}
+            value={searchData.brand}
+            data={brands}
+          />
+          <Select
+          className= {classes.select}
+            label="Select cloth type"
+            onChange={(value: string) => {
+              setSearchData((prev: Choice) => ({
+                ...prev,
+                type: value,
+              }));
+            }}
+            value={searchData.type}
+            data={type}
+          />
       </div>
-      <div className={classes.selectBlock}>
-        <label className={classes.brand}>Brand</label>
-        <select
-          className={classes.brandSelection}
-          onChange={(e: any) => {
-            setSearchData((prev: Choice) => ({
-              ...prev,
-              brand: e.target.value,
-            }));
-          }}
-        >
-          {brands.map((value, index) => (
-            <option value={value} key={value} selected={index === 0}>
-              {value}
-            </option>
-          ))}
-        </select>
+      <Button mt={20} type="button" onClick={handleSearch}>
+        Generate
+      </Button>
       </div>
-      <div className={classes.selectBlock}>
-        <label className={classes.type}>Type</label>
-        <select
-          className={classes.typeSelection}
-          onChange={(e: any) => {
-            setSearchData((prev: Choice) => ({
-              ...prev,
-              type: e.target.value,
-            }));
-          }}
-        >
-          {type.map((value, index) => (
-            <option value={value} key={value} selected={index === 0}>
-              {value}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      </div>
-      <button className={classes.searchbtn} type="button" onClick={handleSearch}>
-        Search
-      </button>
     </section>
   );
 };

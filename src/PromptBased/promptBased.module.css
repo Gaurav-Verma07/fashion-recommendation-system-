@@ -1,20 +1,16 @@
 .container {
   margin: auto;
   display: flex;
-  box-shadow: 0 0 5px 5px #afb0b1;
   justify-content: space-around;
-  width: 1300px;
-  height: 650px;
-  background-color: rgb(27, 27, 27);
+  max-width: fit-content;
+  border: 1px solid #be4bdb;
+  border-radius: 16px;
+  padding: 40px
 }
 
 .prompt {
   width: 700px;
-  height: 600px;
-}
-
-.promptHeading h4 {
-  color: rgb(202, 201, 201);
+  margin-right: 40px;
 }
 
 .textBox {
@@ -28,29 +24,21 @@
 }
 
 .searchButton {
-  font-family: "Courier New", Courier, monospace;
-
-  box-shadow: 0 0 2px 2px #afb0b1;
-  margin: 2%;
-  font-size: 25px;
-  font-weight: 600;
-  margin: 7%;
-  width: 500px;
+  margin-top:15px; 
+  display: flex;
+  justify-content: flex-end;
 }
 
 .generatedImage {
-  margin: auto;
-  height: 600px;
-  width: 500px;
-  border-radius: 5px;
-  box-shadow: 0 0 1px 1px #afb0b1;
+  border-radius: 16px;
+  border: 1px dotted #afb0b1;
+  padding: 10px;
 }
 
 .genAiImage {
-  height: 450px;
-  width: 400px;
+  height: 400px;
+  width: 300px;
   background-color: rgb(175, 176, 177);
   margin: auto;
-  margin-top: 10%;
   border-radius: 5px;
 }

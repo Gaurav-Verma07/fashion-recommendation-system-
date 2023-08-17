@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useContext } from "react";
-import DataContext from "../context/dataContext";
-import classes from "./promptBased.module.css";
+import { useState, useContext } from 'react';
+import DataContext from '../context/dataContext';
+import classes from './promptBased.module.css';
+import { Title, Textarea, Button, Text, Skeleton } from '@mantine/core';
 
 const PromptBased = () => {
-  const [prompt, setPrompt] = useState<string>("");
+  const [prompt, setPrompt] = useState<string>('');
   const { setData } = useContext(DataContext);
 
   const handleSearch = async () => {
     const res = fetch(`/`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(prompt),
     });
@@ -22,36 +23,27 @@ const PromptBased = () => {
       <div className={classes.container}>
         <div className={classes.prompt}>
           <div className={classes.promptHeading}>
-            <h3>Describe your fashion</h3>
-            <h4>
-              What do you want to wear, you can use a single word or complete
-              sentence
-            </h4>
+            <Title order={2} mb={6}>
+              Describe your fashion
+            </Title>
           </div>
-          <textarea
-            className={classes.textBox}
-            placeholder="Write spme prompt for Suggestions ..."
+          <Textarea
+            placeholder="A floral frock with natural colors..."
+            description="What do you want to wear, you can use a single word or complete sentence"
+            withAsterisk
+            autosize
+            minRows={6}
             onChange={(e: any) => {
               setPrompt(e.target.value);
             }}
-            name=""
-            id=""
-            cols={30}
-            rows={10}
-          ></textarea>
-          <button
-            className={classes.searchButton}
-            type="button"
-            onClick={handleSearch}
-          >
-            Generate
-          </button>
+          />
+          <div className={classes.searchButton}>
+            <Button style={{width: '50%'}} onClick={handleSearch}>Generate</Button>
+          </div>
         </div>
         <div className={classes.generatedImage}>
-          <div className={classes.promptHeading}>
-            <h3>Your Desired GenAI Image</h3>
-          </div>
-          <div className={classes.genAiImage}></div>
+            <Text mb={5} fw={500} >Your Desired GenAI Image</Text>
+          <Skeleton className={classes.genAiImage}/>
         </div>
       </div>
     </section>
