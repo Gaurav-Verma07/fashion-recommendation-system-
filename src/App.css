@@ -1,6 +1,6 @@
 #root {
   padding: 2rem;
-  text-align: center; 
+  text-align: center;
 }
 
 .logo {
@@ -40,29 +40,30 @@
 }
 
 .buttons {
-  margin: 5%;
+  margin: 3%;
 }
 
 .chooseButton,
 .promptButton {
   font-family: "Courier New", Courier, monospace;
 
-.buttons{
-  /* margin: 10%; */
-}
+  .buttons {
+    /* margin: 10%; */
+  }
 
-.chooseButton , .promptButton{
-  margin: 2%;
-  position: relative;
-  font-size: 25px;
-  font-weight: 600;
-
-}
+  .chooseButton,
+  .promptButton {
+    margin: 2%;
+    position: relative;
+    font-size: 25px;
+    font-weight: 600;
+  }
 
   border: 2px solid #646cff;
 }
 
-.chooseButton::before, .promptButton::before{
+.chooseButton::before,
+.promptButton::before {
   position: absolute;
   top: 0;
   right: 0;
@@ -71,6 +72,12 @@
   z-index: -1;
   margin: calc(-1 * 2px);
   content: "";
-  background-image: linear-gradient(166deg,#ff507a,#7d51df 33%,#2265de 66%,#0bc786);
+  background-image: linear-gradient(
+    166deg,
+    #ff507a,
+    #7d51df 33%,
+    #2265de 66%,
+    #0bc786
+  );
   border-radius: inherit;
 }
