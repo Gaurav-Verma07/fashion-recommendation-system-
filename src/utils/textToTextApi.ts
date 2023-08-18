@@ -6,7 +6,7 @@ import { LLMChain } from "langchain/chains";
 export const textToTextApi = (inputPrompt: string) => {
   const model = new OpenAI({
     temperature: 0,
-    openAIApiKey: "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",
+    openAIApiKey: import.meta.env.VITE_OPENAI_KEY,
   });
   const prompt = PromptTemplate.fromTemplate(inputPrompt);
   const chainA = new LLMChain({ llm: model, prompt });
