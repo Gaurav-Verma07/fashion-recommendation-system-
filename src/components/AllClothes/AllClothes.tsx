@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext } from "react";
 import DataContext from "../../context/dataContext";
-import { Image, Skeleton } from "@mantine/core";
+import { Skeleton } from "@mantine/core";
 import classes from "./AllClothes.module.css";
 
 const color = ["red", "orange", "purple", "grey", "pink"];
@@ -18,18 +18,16 @@ const AllClothes = () => {
         {allImages.map((cloth: any) => {
           return (
             <Skeleton
-              mt={30}
-              sx={{ borderRadius: "30px", overflow: "hidden" }}
+              className={classes.image}
               visible={isLoading}
               width={"auto"}
             >
-              <Image
-                mt={30}
+              <img
                 width={300}
                 height={500}
                 src={cloth.imageUrl}
                 className={classes.image}
-                sx={{
+                style={{
                   border: `1px solid ${color[Math.floor(Math.random() * 5)]}`,
                 }}
               />
