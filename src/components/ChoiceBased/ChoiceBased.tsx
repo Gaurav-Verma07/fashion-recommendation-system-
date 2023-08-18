@@ -6,8 +6,50 @@ import { textToImageApi } from "../../utils/textToImageAPi";
 import DataContext from "../../context/dataContext";
 import { textToTextApi } from "../../utils/textToTextApi";
 
-const colors = ["pink", "Red", "Blue", "Green", "Purple"];
-const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
+const colors = [
+  "Red",
+  "Blue",
+  "Green",
+  "Yellow",
+  "Pink",
+  "Purple",
+  "Orange",
+  "Black",
+  "White",
+  "Gray",
+  "Brown",
+  "Teal",
+  "Lavender",
+  "Gold",
+  "Silver",
+  "Indigo",
+  "Magenta",
+  "Turquoise",
+  "Coral",
+  "Olive",
+];
+const brands = [
+  "Gucci",
+  "Louis Vuitton",
+  "Chanel",
+  "Hermès",
+  "Prada",
+  "Dior",
+  "Burberry",
+  "Versace",
+  "Ralph Lauren",
+  "Balenciaga",
+  "Fendi",
+  "Givenchy",
+  "Alexander McQueen",
+  "Yves Saint Laurent (YSL)",
+  "Valentino",
+  "Calvin Klein",
+  "Tommy Hilfiger",
+  "Marc Jacobs",
+  "Michael Kors",
+  "Coach",
+];
 const type = ["Jeans", "Top", "Jewellary", "Shoes", "Goggles"];
 const gender = ["Male", "Female"];
 
