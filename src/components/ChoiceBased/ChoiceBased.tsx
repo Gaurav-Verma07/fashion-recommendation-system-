@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useState, useEffect } from 'react';
 import classes from './choiceBased.module.css';
-import { Select } from '@mantine/core';
+import { Button, Select } from '@mantine/core';
 import DataContext from '../../context/dataContext';
 // import { textToTextApi } from '../../utils/textToTextApi';
 import { edenAIApi } from '../../utils/edenAIApi';
@@ -28,6 +28,10 @@ const ChoiceBased = () => {
   const { setData, setIsLoading } = useContext(DataContext);
 
   useEffect(() => {
+    searchHandler();
+  }, []);
+
+  const searchHandler = () => {
     try {
       setIsLoading(true);
       edenAIApi(
@@ -40,7 +44,7 @@ const ChoiceBased = () => {
     } catch (err) {
       console.log({ err });
     }
-  }, [searchData, setData]);
+  };
 
   return (
     <section>
@@ -95,6 +99,9 @@ const ChoiceBased = () => {
             data={gender}
           />
         </div>
+        <Button color="grape" onClick={searchHandler} mt= {40} >
+          Generate
+        </Button>
       </div>
     </section>
   );
