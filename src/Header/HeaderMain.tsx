@@ -86,7 +86,7 @@ export function HeaderMain() {
   });
 
   return (
-    <Header height={80} className={classes.header} mb={100}>
+    <Header height={80} className={classes.header}>
       <Container>
         <div className={classes.inner}>
         <Image width= "200px" height="63px" src={logo} />

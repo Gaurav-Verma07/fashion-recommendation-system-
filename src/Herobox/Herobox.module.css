@@ -1,0 +1,20 @@
+.main{
+    height: 90vh;
+    background-image: url("../assets/heroboxbg.svg");
+    background-position:top;
+    background-repeat: no-repeat;
+    background-size:auto ;
+    display: flex;
+    align-items: center;
+}
+
+.body{
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    backdrop-filter: blur(5px);
+    background-color:rgba(0, 0, 0 , .05);
+    padding: 20px;
+    border-radius: 8px;
+
+}
