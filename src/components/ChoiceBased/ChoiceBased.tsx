@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import classes from "./choiceBased.module.css";
 import { Select, Button } from "@mantine/core";
 import { textToTextApi } from "../../utils/textToTextApi";
+import { textToImageApi } from "../../utils/textToImageAPi";
+import { ChainValues } from "langchain/schema";
+import DataContext from "../../context/dataContext";
 
 const colors = ["pink", "Red", "Blue", "Green", "Purple"];
 const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
@@ -20,12 +23,22 @@ const ChoiceBased = () => {
     brand: "H&M",
     type: "Jeans",
   });
+  const [isSearch, setIsSearch] = useState(false);
+  const { setData } = useContext(DataContext);
 
-  const handleSearch = async () => {
+  useEffect(() => {
     textToTextApi(
       `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand.`
-    );
-  };
+    ).then((res: ChainValues) => {
+      textToImageApi(res?.text).then((response) => {
+        setData({
+          result: response,
+          isSearched: true,
+          isPrompt: false,
+        });
+      });
+    });
+  }, [isSearch]);
 
   return (
     <section>
@@ -73,7 +86,9 @@ const ChoiceBased = () => {
           sx={{ background: "linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)" }}
           mt={20}
           type="button"
-          onClick={handleSearch}
+          onClick={() => {
+            setIsSearch(true);
+          }}
         >
           Generate
         </Button>

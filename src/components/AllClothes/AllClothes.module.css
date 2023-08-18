@@ -1,0 +1,17 @@
+.section{
+    max-width: 1440px;
+    padding: 0 30px ;
+    margin: 70px auto 0 auto;
+}
+
+.body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.image{
+    border-radius: 30px;
+    overflow: hidden;
+
+}
