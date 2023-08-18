@@ -2,8 +2,9 @@
 import { useContext, useState, useEffect } from "react";
 import classes from "./choiceBased.module.css";
 import { Select } from "@mantine/core";
- import { textToImageApi } from "../../utils/textToImageAPi";
+import { textToImageApi } from "../../utils/textToImageAPi";
 import DataContext from "../../context/dataContext";
+import { textToTextApi } from "../../utils/textToTextApi";
 
 const colors = ["pink", "Red", "Blue", "Green", "Purple"];
 const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
@@ -30,15 +31,17 @@ const ChoiceBased = () => {
     console.log(searchData);
     try {
       setIsLoading(true);
-      textToImageApi(
-        `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand for ${searchData.gender}.`
-      ).then((response) => {
-        setData({
-          result: response,
-          isSearched: true,
-          isPrompt: false,
+      textToTextApi(
+        `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand.`
+      ).then((res: any) => {
+        textToImageApi(res).then((response) => {
+          setData({
+            result: response,
+            isSearched: true,
+            isPrompt: false,
+          });
+          setIsLoading(false);
         });
-        setIsLoading(false);
       });
     } catch (err) {
       console.log({ err });

@@ -9,12 +9,20 @@ const color = ["red", "orange", "purple", "grey", "pink"];
 const AllClothes = () => {
   const { data, isLoading } = useContext(DataContext);
   console.log({ data });
+
+  const allImages = data.result?.images ?? Array(10);
+
   return (
     <section className={classes.section}>
       <div className={classes.body}>
-        {data.result?.images.map((cloth: any) => {
+        {allImages.map((cloth: any) => {
           return (
-            <Skeleton mt={30} sx={{borderRadius: '30px', overflow: 'hidden'}} visible={isLoading} width={'auto'}>
+            <Skeleton
+              mt={30}
+              sx={{ borderRadius: "30px", overflow: "hidden" }}
+              visible={isLoading}
+              width={"auto"}
+            >
               <Image
                 mt={30}
                 width={300}
