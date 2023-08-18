@@ -22,3 +22,6 @@ button:active, button:focus, button:focus-visible{
   background-color: #646cff;
 }
 
+*{
+  font-family: 'Lato', sans-serif;
+}
