@@ -12,11 +12,12 @@ function App() {
     isSearched: false,
     isPrompt: false,
   });
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
     <div>
       <HeaderMain />
-      <DataContext.Provider value={{ data, setData }}>
+      <DataContext.Provider value={{ data, setData, isLoading, setIsLoading }}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/generate" element={<Choice />} />
