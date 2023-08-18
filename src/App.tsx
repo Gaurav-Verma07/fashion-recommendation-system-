@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 import DataContext from "./context/dataContext";
-import Footer from "./Footer/footer";
-import HeaderMain from "./Header/HeaderMain";
 import { Routes, Route } from "react-router-dom";
+import HeaderMain from "./components/Header/HeaderMain";
 import HomePage from "./pages/HomePage/HomePage";
 import Choice from "./pages/Choice/Choice";
+import Footer from "./components/Footer/footer";
 function App() {
   const [data, setData] = useState({
     result: {},

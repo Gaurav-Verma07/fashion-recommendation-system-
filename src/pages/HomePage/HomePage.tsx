@@ -1,4 +1,4 @@
-import Herobox from "../../Herobox/Herobox";
+import Herobox from "../../components/Herobox/Herobox";
 
 const HomePage = () => {
   return (

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useContext } from 'react';
-import DataContext from '../context/dataContext';
+import DataContext from '../../context/dataContext';
 import classes from './promptBased.module.css';
 import { Title, Textarea, Button, Text, Skeleton } from '@mantine/core';
 

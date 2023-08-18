@@ -1,7 +1,7 @@
 import { createStyles, Header,  Group,  Burger, Container, rem, Image } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { links } from './links';
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({

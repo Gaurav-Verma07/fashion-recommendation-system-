@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { SegmentedControl } from "@mantine/core";
-import ChoiceBased from "../../ChoiceBased/ChoiceBased";
-import PromptBased from "../../PromptBased/PromptBased";
-import AllClothes from "../../AllClothes/AllClothes";
+import ChoiceBased from "../../components/ChoiceBased/ChoiceBased";
+import PromptBased from "../../components/PromptBased/PromptBased";
+import AllClothes from "../../components/AllClothes/AllClothes";
 import DataContext from "../../context/dataContext";
 
 const Choice = () => {

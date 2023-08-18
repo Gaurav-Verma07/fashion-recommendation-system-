@@ -2,7 +2,7 @@
 import { useState } from "react";
 import classes from "./choiceBased.module.css";
 import { Select, Button } from "@mantine/core";
-import { textToTextApi } from "../utils/textToTextApi";
+import { textToTextApi } from "../../utils/textToTextApi";
 
 const colors = ["pink", "Red", "Blue", "Green", "Purple"];
 const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
