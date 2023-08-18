@@ -38,7 +38,7 @@ const PromptBased = () => {
             }}
           />
           <div className={classes.searchButton}>
-            <Button style={{width: '50%'}} onClick={handleSearch}>Generate</Button>
+            <Button sx={{width: '50%', background:'linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)'}} onClick={handleSearch}>Generate</Button>
           </div>
         </div>
         <div className={classes.generatedImage}>

@@ -81,7 +81,7 @@ const ChoiceBased = () => {
             data={type}
           />
       </div>
-      <Button mt={20} type="button" onClick={handleSearch}>
+      <Button p={10} sx={{background:'linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)'}} mt={20} type="button" onClick={handleSearch}>
         Generate
       </Button>
       </div>

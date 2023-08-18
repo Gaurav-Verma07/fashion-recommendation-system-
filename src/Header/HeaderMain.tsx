@@ -2,6 +2,7 @@ import { createStyles, Header,  Group,  Burger, Container, rem, Image } from '@m
 import { useDisclosure } from '@mantine/hooks';
 import { links } from './links';
 import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -48,6 +49,7 @@ const useStyles = createStyles((theme) => ({
 export function HeaderMain() {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
+  const navigate= useNavigate();
 
   const items = links.map((link) => {
 
@@ -68,7 +70,7 @@ export function HeaderMain() {
     <Header height={80} className={classes.header}>
       <Container>
         <div className={classes.inner}>
-        <Image width= "200px" height="63px" src={logo} />
+        <Image sx={{cursor: 'pointer'}} onClick={()=>{navigate('/')}} width= "200px" height="63px" src={logo} />
           <Group spacing={5} className={classes.links}>
             {items}
           </Group>

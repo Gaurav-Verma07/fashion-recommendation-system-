@@ -1,0 +1,35 @@
+import { useState, useContext } from "react";
+import { SegmentedControl } from "@mantine/core";
+import ChoiceBased from "../../ChoiceBased/ChoiceBased";
+import PromptBased from "../../PromptBased/PromptBased";
+import AllClothes from "../../AllClothes/AllClothes";
+import DataContext from "../../context/dataContext";
+
+const Choice = () => {
+  const [searchType, setSearchType] = useState("CHOICE");
+  const { data } = useContext(DataContext);
+
+  return (
+    <div>
+      <div className="segmentControl">
+        <SegmentedControl
+          size="lg"
+          radius="lg"
+          color="blue"
+          onChange={(value: string) => {
+            setSearchType(value);
+          }}
+          data={[
+            { label: "Choice based", value: "CHOICE" },
+            { label: "Prompt based", value: "PROMPT" },
+          ]}
+        />
+      </div>
+      {searchType === "CHOICE" && <ChoiceBased />}
+      {searchType === "PROMPT" && <PromptBased />}
+      {data.isSearched && <AllClothes />}
+    </div>
+  );
+};
+
+export default Choice;
