@@ -1,38 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext } from "react";
-import DataContext from "../../context/dataContext";
-import { Skeleton } from "@mantine/core";
-import classes from "./AllClothes.module.css";
-
-const color = ["red", "orange", "purple", "grey", "pink"];
+import { useContext } from 'react';
+import DataContext from '../../context/dataContext';
+import classes from './AllClothes.module.css';
+import CustomImage from './CustomImage';
 
 const AllClothes = () => {
-  const { data, isLoading } = useContext(DataContext);
-  console.log({ data });
+  const { data } = useContext(DataContext);
+  console.log( data.result);
 
-  const allImages = data.result?.images ?? Array(10);
+  const allImages: Array<any> = data?.result ?? Array(10);
 
   return (
     <section className={classes.section}>
       <div className={classes.body}>
-        {allImages.map((cloth: any) => {
-          return (
-            <Skeleton
-              className={classes.image}
-              visible={isLoading}
-              width={"auto"}
-            >
-              <img
-                width={300}
-                height={500}
-                src={cloth.imageUrl}
-                className={classes.image}
-                style={{
-                  border: `1px solid ${color[Math.floor(Math.random() * 5)]}`,
-                }}
-              />
-            </Skeleton>
-          );
+        {allImages?.map((cloth: any, index: number) => {
+          return <CustomImage key={index} imageUrl={cloth?.image_resource_url as string} />;
         })}
       </div>
     </section>

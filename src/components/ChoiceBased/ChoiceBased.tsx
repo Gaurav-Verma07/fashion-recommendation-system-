@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useState, useEffect } from "react";
-import classes from "./choiceBased.module.css";
-import { Select } from "@mantine/core";
-import { textToImageApi } from "../../utils/textToImageAPi";
-import DataContext from "../../context/dataContext";
-import { textToTextApi } from "../../utils/textToTextApi";
+import { useContext, useState, useEffect } from 'react';
+import classes from './choiceBased.module.css';
+import { Select } from '@mantine/core';
+import DataContext from '../../context/dataContext';
+// import { textToTextApi } from '../../utils/textToTextApi';
+import { edenAIApi } from '../../utils/edenAIApi';
 
-const colors = ["pink", "Red", "Blue", "Green", "Purple"];
-const brands = ["H&M", "Gucci", "Louis Vuitton", "Prada", "Balenciaga"];
-const type = ["Jeans", "Top", "Jewellary", "Shoes", "Goggles"];
-const gender = ["Male", "Female"];
+const colors = ['pink', 'Red', 'Blue', 'Green', 'Purple'];
+const brands = ['H&M', 'Gucci', 'Louis Vuitton', 'Prada', 'Balenciaga'];
+const type = ['Jeans', 'Top', 'Jewellary', 'Shoes', 'Goggles'];
+const gender = ['Male', 'Female'];
 
 interface Choice {
   color: string;
@@ -20,28 +20,22 @@ interface Choice {
 
 const ChoiceBased = () => {
   const [searchData, setSearchData] = useState<Choice>({
-    color: "pink",
-    brand: "H&M",
-    type: "Jeans",
-    gender: "Female",
+    color: 'pink',
+    brand: 'H&M',
+    type: 'Jeans',
+    gender: 'Female',
   });
   const { setData, setIsLoading } = useContext(DataContext);
 
   useEffect(() => {
-    console.log(searchData);
     try {
       setIsLoading(true);
-      textToTextApi(
-        `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand.`
-      ).then((res: any) => {
-        textToImageApi(res).then((response) => {
-          setData({
-            result: response,
-            isSearched: true,
-            isPrompt: false,
-          });
-          setIsLoading(false);
-        });
+      edenAIApi(
+        `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand for a ${searchData.gender}`,
+      ).then((res) => {
+        console.log({ res });
+        setData({ result: res?.openai?.items, isSearched: true, isPrompt: false });
+        setIsLoading(false);
       });
     } catch (err) {
       console.log({ err });

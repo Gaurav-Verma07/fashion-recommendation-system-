@@ -13,7 +13,7 @@ export interface DataProps {
 }
 
 const DataContext = React.createContext<DataProps>({
-  data: { result: {}, isSearched: false, isPrompt: false },
+  data: { result: [], isSearched: false, isPrompt: false },
   setData: () => {},
   isLoading: true,
   setIsLoading: () => {},

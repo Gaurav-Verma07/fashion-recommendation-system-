@@ -12,7 +12,7 @@ function App() {
     isSearched: false,
     isPrompt: false,
   });
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
     <div>
