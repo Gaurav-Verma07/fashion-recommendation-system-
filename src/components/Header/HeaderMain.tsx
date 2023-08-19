@@ -7,7 +7,6 @@ import {
   Image,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { links } from "./links";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import "./HeaderMain.css";
@@ -58,19 +57,6 @@ export function HeaderMain() {
   const { classes } = useStyles();
   const navigate = useNavigate();
 
-  const items = links.map((link) => {
-    return (
-      <a
-        key={link.label}
-        href={link.link}
-        style={{ fontSize: "20px", fontWeight: 500, color: "#717171" }}
-        className={classes.link}
-        onClick={(event) => event.preventDefault()}
-      >
-        {link.label}
-      </a>
-    );
-  });
 
   return (
     <Header height={80} className={classes.header}>
