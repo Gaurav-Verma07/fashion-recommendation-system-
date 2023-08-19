@@ -26,11 +26,11 @@ const PromptBased = () => {
           searchPrompt: prompt,
         });
         setAllData((prev) => [
-          ...prev,
           {
             images: res?.openai?.items,
             prompt: prompt,
           },
+          ...prev,
         ]);
 
         setIsLoading(false);
