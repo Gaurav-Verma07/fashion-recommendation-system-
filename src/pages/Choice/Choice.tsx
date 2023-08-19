@@ -17,7 +17,11 @@ const Choice = () => {
           radius="lg"
           color="blue"
           onChange={(value: string) => {
-            setData({ result: {}, isSearched: false, isPrompt: false });
+            setData((prev) => ({
+              ...prev,
+              isSearched: false,
+              isPrompt: false,
+            }));
             setSearchType(value);
           }}
           data={[
