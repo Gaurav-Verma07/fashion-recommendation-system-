@@ -56,6 +56,7 @@ const PromptBased = () => {
             autosize
             value={prompt}
             minRows={6}
+            className={classes.promptBox}
             onChange={(e: any) => {
               setPrompt(e.target.value);
             }}

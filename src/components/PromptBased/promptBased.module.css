@@ -42,3 +42,8 @@
   margin: auto;
   border-radius: 5px;
 }
+
+.promptBox > div > textarea{
+  border-color: #1c7ed6 !important;
+}
+
