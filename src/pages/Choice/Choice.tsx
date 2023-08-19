@@ -19,7 +19,6 @@ const Choice = () => {
           onChange={(value: string) => {
             setData((prev) => ({
               ...prev,
-              isSearched: false,
               isPrompt: false,
             }));
             setSearchType(value);

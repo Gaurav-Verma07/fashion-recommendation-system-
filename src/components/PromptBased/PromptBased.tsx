@@ -2,14 +2,14 @@
 import { useState, useContext } from "react";
 import DataContext from "../../context/dataContext";
 import classes from "./promptBased.module.css";
-import { Title, Textarea, Button } from "@mantine/core";
+import { Title, Textarea, Button, Loader } from "@mantine/core";
 import { edenAIApi } from "../../utils/edenAIApi";
 
 const PromptBased = () => {
   const [prompt, setPrompt] = useState<string>(
     localStorage.getItem("prompt") || ""
   );
-  const { setData, setIsLoading } = useContext(DataContext);
+  const { setData, setIsLoading, isLoading } = useContext(DataContext);
 
   const handleSearch = () => {
     localStorage.setItem("prompt", prompt);
@@ -58,7 +58,7 @@ const PromptBased = () => {
               }}
               onClick={handleSearch}
             >
-              Generate
+              {isLoading ? <Loader color="white" variant="dots" /> : "Generate"}
             </Button>
           </div>
         </div>

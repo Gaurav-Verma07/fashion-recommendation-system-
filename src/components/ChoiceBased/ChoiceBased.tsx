@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useState } from "react";
 import classes from "./choiceBased.module.css";
-import { Button, Select } from "@mantine/core";
+import { Button, Loader, Select } from "@mantine/core";
 import DataContext from "../../context/dataContext";
 // import { textToTextApi } from '../../utils/textToTextApi';
 import { edenAIApi } from "../../utils/edenAIApi";
@@ -73,7 +73,7 @@ const ChoiceBased = () => {
     type: "Jeans",
     gender: "Female",
   });
-  const { setData, setIsLoading } = useContext(DataContext);
+  const { setData, setIsLoading, isLoading } = useContext(DataContext);
 
   const searchHandler = () => {
     try {
@@ -188,7 +188,7 @@ const ChoiceBased = () => {
           />
         </div>
         <Button color="grape" onClick={searchHandler} mt={40}>
-          Generate
+          {isLoading ? <Loader color="white" variant="dots" /> : "Generate"}
         </Button>
       </div>
     </section>
