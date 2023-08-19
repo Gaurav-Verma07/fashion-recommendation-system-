@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useState, useEffect } from 'react';
-import classes from './choiceBased.module.css';
-import { Button, Select } from '@mantine/core';
-import DataContext from '../../context/dataContext';
+import { useContext, useState } from "react";
+import classes from "./choiceBased.module.css";
+import { Button, Select } from "@mantine/core";
+import DataContext from "../../context/dataContext";
 // import { textToTextApi } from '../../utils/textToTextApi';
-import { edenAIApi } from '../../utils/edenAIApi';
+import { edenAIApi } from "../../utils/edenAIApi";
 
 const colors = [
   "Red",
@@ -61,26 +61,32 @@ interface Choice {
 }
 
 const ChoiceBased = () => {
+  const [tagData, setTagData] = useState({
+    colors,
+    brands,
+    type,
+    gender,
+  });
   const [searchData, setSearchData] = useState<Choice>({
-    color: 'Pink',
-    brand: 'Versace',
-    type: 'Jeans',
-    gender: 'Female',
+    color: "Pink",
+    brand: "Versace",
+    type: "Jeans",
+    gender: "Female",
   });
   const { setData, setIsLoading } = useContext(DataContext);
-
-  useEffect(() => {
-    searchHandler();
-  }, []);
 
   const searchHandler = () => {
     try {
       setIsLoading(true);
       edenAIApi(
-        `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand for a ${searchData.gender}`,
+        `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand for a ${searchData.gender}`
       ).then((res) => {
         console.log({ res });
-        setData({ result: res?.openai?.items, isSearched: true, isPrompt: false });
+        setData({
+          result: res?.openai?.items,
+          isSearched: true,
+          isPrompt: false,
+        });
         setIsLoading(false);
       });
     } catch (err) {
@@ -93,6 +99,16 @@ const ChoiceBased = () => {
       <div className={classes.main}>
         <div className={classes.selBox}>
           <Select
+            searchable
+            creatable
+            getCreateLabel={(query) => `+ Create ${query}`}
+            onCreate={(query) => {
+              setTagData((current) => ({
+                ...current,
+                colors: [...current.colors, query],
+              }));
+              return query;
+            }}
             className={classes.select}
             label="Select Color"
             onChange={(value: string) => {
@@ -102,9 +118,19 @@ const ChoiceBased = () => {
               }));
             }}
             value={searchData.color}
-            data={colors}
+            data={tagData.colors}
           />
           <Select
+            searchable
+            creatable
+            getCreateLabel={(query) => `+ Create ${query}`}
+            onCreate={(query) => {
+              setTagData((current) => ({
+                ...current,
+                brands: [...current.brands, query],
+              }));
+              return query;
+            }}
             className={classes.select}
             label="Select Brand"
             onChange={(value: string) => {
@@ -114,9 +140,19 @@ const ChoiceBased = () => {
               }));
             }}
             value={searchData.brand}
-            data={brands}
+            data={tagData.brands}
           />
           <Select
+            searchable
+            creatable
+            getCreateLabel={(query) => `+ Create ${query}`}
+            onCreate={(query) => {
+              setTagData((current) => ({
+                ...current,
+                type: [...current.type, query],
+              }));
+              return query;
+            }}
             className={classes.select}
             label="Select cloth type"
             onChange={(value: string) => {
@@ -126,9 +162,19 @@ const ChoiceBased = () => {
               }));
             }}
             value={searchData.type}
-            data={type}
+            data={tagData.type}
           />
           <Select
+            searchable
+            creatable
+            getCreateLabel={(query) => `+ Create ${query}`}
+            onCreate={(query) => {
+              setTagData((current) => ({
+                ...current,
+                gender: [...current.gender, query],
+              }));
+              return query;
+            }}
             className={classes.select}
             label="Your Gender"
             onChange={(value: string) => {
@@ -138,10 +184,10 @@ const ChoiceBased = () => {
               }));
             }}
             value={searchData.gender}
-            data={gender}
+            data={tagData.gender}
           />
         </div>
-        <Button color="grape" onClick={searchHandler} mt= {40} >
+        <Button color="grape" onClick={searchHandler} mt={40}>
           Generate
         </Button>
       </div>
