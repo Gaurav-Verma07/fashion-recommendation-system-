@@ -29,3 +29,43 @@
   height: auto;
   background: linear-gradient(90deg, #04a0f4, #11b7da, #23d5b8);
 }
+
+.uc1 {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 0 1px 1px #b1def7;
+  border-radius: 14px;
+  width: 80%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.uc1Image img {
+  width: 500px;
+  height: 500px;
+}
+
+.uc1Content,
+.uc2Content {
+  padding: 10%;
+}
+
+.uc1Content h1 {
+  color: rgb(207, 145, 243);
+}
+
+.uc1Content p {
+  font-size: 25px;
+  font-weight: 500;
+  color: rgb(182, 57, 255);
+}
+
+.uc2Content h1 {
+  color: rgb(247, 168, 144);
+}
+
+.uc2Content p {
+  font-size: 25px;
+  font-weight: 500;
+  color: rgb(250, 105, 61);
+}
