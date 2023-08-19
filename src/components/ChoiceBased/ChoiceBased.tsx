@@ -62,8 +62,8 @@ interface Choice {
 
 const ChoiceBased = () => {
   const [searchData, setSearchData] = useState<Choice>({
-    color: 'pink',
-    brand: 'H&M',
+    color: 'Pink',
+    brand: 'Versace',
     type: 'Jeans',
     gender: 'Female',
   });
