@@ -72,9 +72,6 @@ const ChoiceBased = () => {
     console.log(searchData);
     try {
       setIsLoading(true);
-      // textToTextApi(
-      //   `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand.`
-      // ).then((res: any) => {
       textToImageApi(
         `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand.`
       ).then((response) => {
@@ -85,11 +82,10 @@ const ChoiceBased = () => {
         });
         setIsLoading(false);
       });
-      // });
     } catch (err) {
       console.log({ err });
     }
-  }, [searchData, setData]);
+  }, [searchData]);
 
   return (
     <section>
