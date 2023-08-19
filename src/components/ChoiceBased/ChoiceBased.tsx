@@ -73,7 +73,9 @@ const ChoiceBased = () => {
     type: "Jeans",
     gender: "Female",
   });
-  const { setData, setIsLoading, isLoading } = useContext(DataContext);
+  const { setData, setIsLoading, isLoading, setAllData } = useContext(
+    DataContext
+  );
 
   const searchHandler = () => {
     try {
@@ -88,6 +90,13 @@ const ChoiceBased = () => {
           isPrompt: false,
           searchPrompt: `${searchData.color} ${searchData.brand} ${searchData.type} ${searchData.gender}`,
         });
+        setAllData((prev) => [
+          ...prev,
+          {
+            images: res?.openai?.items,
+            prompt: `${searchData.type}, ${searchData.color}, ${searchData.brand}, ${searchData.gender}`,
+          },
+        ]);
         setIsLoading(false);
       });
     } catch (err) {

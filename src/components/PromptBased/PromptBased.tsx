@@ -9,7 +9,9 @@ const PromptBased = () => {
   const [prompt, setPrompt] = useState<string>(
     localStorage.getItem("prompt") || ""
   );
-  const { setData, setIsLoading, isLoading } = useContext(DataContext);
+  const { setData, setIsLoading, isLoading, setAllData } = useContext(
+    DataContext
+  );
 
   const handleSearch = () => {
     localStorage.setItem("prompt", prompt);
@@ -23,6 +25,14 @@ const PromptBased = () => {
           isPrompt: false,
           searchPrompt: prompt,
         });
+        setAllData((prev) => [
+          ...prev,
+          {
+            images: res?.openai?.items,
+            prompt: prompt,
+          },
+        ]);
+
         setIsLoading(false);
       });
     } catch (err) {

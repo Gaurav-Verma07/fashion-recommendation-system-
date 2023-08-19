@@ -5,16 +5,16 @@ import classes from "./AllClothes.module.css";
 import CustomImage from "./CustomImage";
 
 const AllClothes = () => {
-  const { data } = useContext(DataContext);
+  const { data, allData } = useContext(DataContext);
 
   const allImages: Array<any> = data?.result ?? Array(10);
 
   console.log(data.result);
-
+  console.log({ allData });
   return (
     <section className={classes.section}>
       <div className={classes.body}>
-        { allImages?.map((cloth: any, index: number) => {
+        {allImages?.map((cloth: any, index: number) => {
           return (
             <CustomImage
               key={index}

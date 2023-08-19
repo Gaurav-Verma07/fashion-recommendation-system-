@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import "./App.css";
-import DataContext from "./context/dataContext";
+import DataContext, { AllDataProps } from "./context/dataContext";
 import { Routes, Route, useLocation } from "react-router-dom";
 import HeaderMain from "./components/Header/HeaderMain";
 import HomePage from "./pages/HomePage/HomePage";
@@ -16,6 +17,12 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageRef, setImageRef] = useState<string>("");
   const location = useLocation();
+  const [allData, setAllData] = useState<Array<AllDataProps>>([
+    {
+      images: [],
+      prompt: "",
+    },
+  ]);
 
   return (
     <div>
@@ -28,6 +35,8 @@ function App() {
           setIsLoading,
           imageRef,
           setImageRef,
+          allData,
+          setAllData,
         }}
       >
         <Routes>
