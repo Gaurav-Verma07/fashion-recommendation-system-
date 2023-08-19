@@ -7,16 +7,20 @@ import CustomImage from "./CustomImage";
 const AllClothes = () => {
   const { data } = useContext(DataContext);
 
-  const allImages = data.result?.images ?? Array(10);
+  const allImages: Array<any> = data?.result ?? Array(10);
 
   console.log(data.result);
 
   return (
     <section className={classes.section}>
       <div className={classes.body}>
-        {allImages.map((cloth: any, index: number) => {
+        {allImages?.map((cloth: any, index: number) => {
           return (
-            <CustomImage key={index} imageUrl={cloth?.imageUrl as string} />
+            <CustomImage
+              key={index}
+              imageRef={cloth?.image}
+              imageUrl={cloth?.image_resource_url as string}
+            />
           );
         })}
       </div>

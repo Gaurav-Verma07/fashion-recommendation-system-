@@ -11,13 +11,24 @@ function App() {
     result: {},
     isSearched: false,
     isPrompt: false,
+    searchPrompt: "",
   });
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [imageRef, setImageRef] = useState<string>("");
 
   return (
     <div>
       <HeaderMain />
-      <DataContext.Provider value={{ data, setData, isLoading, setIsLoading }}>
+      <DataContext.Provider
+        value={{
+          data,
+          setData,
+          isLoading,
+          setIsLoading,
+          imageRef,
+          setImageRef,
+        }}
+      >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/generate" element={<Choice />} />

@@ -6,17 +6,22 @@ export interface DataProps {
     result: any;
     isSearched: boolean;
     isPrompt: boolean;
+    searchPrompt: string;
   };
   isLoading: boolean;
   setIsLoading: Dispatch<SetStateAction<DataProps["isLoading"]>>;
   setData: Dispatch<SetStateAction<DataProps["data"]>>;
+  imageRef: string;
+  setImageRef: Dispatch<SetStateAction<DataProps["imageRef"]>>;
 }
 
 const DataContext = React.createContext<DataProps>({
-  data: { result: {}, isSearched: false, isPrompt: false },
+  data: { result: [], isSearched: false, isPrompt: false, searchPrompt: "" },
   setData: () => {},
   isLoading: true,
   setIsLoading: () => {},
+  imageRef: "",
+  setImageRef: () => {},
 });
 
 export default DataContext;

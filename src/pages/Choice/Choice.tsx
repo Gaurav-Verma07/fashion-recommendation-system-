@@ -7,7 +7,7 @@ import DataContext from "../../context/dataContext";
 
 const Choice = () => {
   const [searchType, setSearchType] = useState("CHOICE");
-  const { data, setData, setIsLoading } = useContext(DataContext);
+  const { data, setData } = useContext(DataContext);
 
   return (
     <div>
@@ -17,10 +17,10 @@ const Choice = () => {
           radius="lg"
           color="blue"
           onChange={(value: string) => {
-            setData({ result: {}, isSearched: false, isPrompt: false });
-            if (value === "CHOICE") {
-              setIsLoading(true);
-            }
+            setData((prev) => ({
+              ...prev,
+              isPrompt: false,
+            }));
             setSearchType(value);
           }}
           data={[
