@@ -4,7 +4,6 @@ import classes from "./choiceBased.module.css";
 import { Select } from "@mantine/core";
 import { textToImageApi } from "../../utils/textToImageAPi";
 import DataContext from "../../context/dataContext";
-import { textToTextApi } from "../../utils/textToTextApi";
 
 const colors = [
   "Red",
@@ -62,8 +61,8 @@ interface Choice {
 
 const ChoiceBased = () => {
   const [searchData, setSearchData] = useState<Choice>({
-    color: "pink",
-    brand: "H&M",
+    color: "Pink",
+    brand: "Versace",
     type: "Jeans",
     gender: "Female",
   });
@@ -73,18 +72,20 @@ const ChoiceBased = () => {
     console.log(searchData);
     try {
       setIsLoading(true);
-      textToTextApi(
+      // textToTextApi(
+      //   `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand.`
+      // ).then((res: any) => {
+      textToImageApi(
         `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand.`
-      ).then((res: any) => {
-        textToImageApi(res).then((response) => {
-          setData({
-            result: response,
-            isSearched: true,
-            isPrompt: false,
-          });
-          setIsLoading(false);
+      ).then((response) => {
+        setData({
+          result: response,
+          isSearched: true,
+          isPrompt: false,
         });
+        setIsLoading(false);
       });
+      // });
     } catch (err) {
       console.log({ err });
     }
