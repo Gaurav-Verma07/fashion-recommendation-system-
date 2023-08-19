@@ -2,7 +2,7 @@ export const edenAIApi = async (prompt :string) => {
   const url = 'https://api.edenai.run/v2/image/generation';
 
   const headers = {
-    authorization: `Bearer  YOUR_API_KEY`,
+    authorization: `Bearer YOUR_API_KEY`,
     'Content-Type': 'application/json',
   };
   const data = {

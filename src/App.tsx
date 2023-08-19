@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import DataContext from "./context/dataContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import HeaderMain from "./components/Header/HeaderMain";
 import HomePage from "./pages/HomePage/HomePage";
 import Choice from "./pages/Choice/Choice";
@@ -15,6 +15,7 @@ function App() {
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageRef, setImageRef] = useState<string>("");
+  const location = useLocation();
 
   return (
     <div>
@@ -35,7 +36,7 @@ function App() {
         </Routes>
       </DataContext.Provider>
 
-      <Footer />
+      {location.pathname === "/" && <Footer />}
     </div>
   );
 }

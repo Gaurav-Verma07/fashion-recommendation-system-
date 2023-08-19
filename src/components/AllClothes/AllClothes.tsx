@@ -14,7 +14,7 @@ const AllClothes = () => {
   return (
     <section className={classes.section}>
       <div className={classes.body}>
-        {allImages?.map((cloth: any, index: number) => {
+        { allImages?.map((cloth: any, index: number) => {
           return (
             <CustomImage
               key={index}
