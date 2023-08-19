@@ -10,6 +10,8 @@ export interface DataProps {
   isLoading: boolean;
   setIsLoading: Dispatch<SetStateAction<DataProps["isLoading"]>>;
   setData: Dispatch<SetStateAction<DataProps["data"]>>;
+  imageRef: string;
+  setImageRef: Dispatch<SetStateAction<DataProps["imageRef"]>>;
 }
 
 const DataContext = React.createContext<DataProps>({
@@ -17,6 +19,8 @@ const DataContext = React.createContext<DataProps>({
   setData: () => {},
   isLoading: true,
   setIsLoading: () => {},
+  imageRef: "",
+  setImageRef: () => {},
 });
 
 export default DataContext;

@@ -1,21 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useContext } from 'react';
-import DataContext from '../../context/dataContext';
-import classes from './promptBased.module.css';
-import { Title, Textarea, Button, Text, Skeleton } from '@mantine/core';
+import { useState, useContext } from "react";
+import DataContext from "../../context/dataContext";
+import classes from "./promptBased.module.css";
+import { Title, Textarea, Button  } from "@mantine/core";
+import { edenAIApi } from "../../utils/edenAIApi";
 
 const PromptBased = () => {
-  const [prompt, setPrompt] = useState<string>('');
-  const { setData } = useContext(DataContext);
+  const [prompt, setPrompt] = useState<string>("");
+  const { setData, setIsLoading } = useContext(DataContext);
 
-  const handleSearch = async () => {
-    const res = fetch(`/`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(prompt),
-    });
-    setData({ result: res, isSearched: true, isPrompt: true });
+  const handleSearch = () => {
+    try {
+      setIsLoading(true);
+      edenAIApi(prompt).then((res) => {
+        console.log({ res });
+        setData({
+          result: res?.openai?.items,
+          isSearched: true,
+          isPrompt: false,
+        });
+        setIsLoading(false);
+      });
+    } catch (err) {
+      console.log({ err });
+    }
   };
 
   return (
@@ -38,12 +46,17 @@ const PromptBased = () => {
             }}
           />
           <div className={classes.searchButton}>
-            <Button sx={{width: '50%', background:'linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)'}} onClick={handleSearch}>Generate</Button>
+            <Button
+              disabled={prompt.length === 0}
+              sx={{
+                width: "50%",
+                background: "linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)",
+              }}
+              onClick={handleSearch}
+            >
+              Generate
+            </Button>
           </div>
-        </div>
-        <div className={classes.generatedImage}>
-            <Text mb={5} fw={500} >Your Desired GenAI Image</Text>
-          <Skeleton className={classes.genAiImage}/>
         </div>
       </div>
     </section>

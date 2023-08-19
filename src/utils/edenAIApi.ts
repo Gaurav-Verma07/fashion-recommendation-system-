@@ -2,7 +2,7 @@ export const edenAIApi = async (prompt :string) => {
   const url = import.meta.env.VITE_EDENAI_URL;
 
   const headers = {
-    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZDBjMDExNDMtNWEyOS00YmIzLWE3YzYtYTIwZGNiNDgzMjA4IiwidHlwZSI6ImFwaV90b2tlbiJ9.GR4zjUBVtCAFm6EgweAJCIT787aHNtcLfQHRO35mO4s`,
+    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmRhYTJmZWYtZGQ4YS00YzEzLTg2ODQtMTcyNDZlYmFjMzUwIiwidHlwZSI6ImFwaV90b2tlbiJ9.CKKPTqQoWRsuDa-utb7fGcG2qP-sL89HUIFIS3JiNA4`,
     'Content-Type': 'application/json',
   };
   const data = {

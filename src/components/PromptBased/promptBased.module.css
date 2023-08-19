@@ -36,8 +36,8 @@
 }
 
 .genAiImage {
-  height: 400px;
-  width: 300px;
+  height: 256px;
+  width: 256px;
   background-color: rgb(175, 176, 177);
   margin: auto;
   border-radius: 5px;
