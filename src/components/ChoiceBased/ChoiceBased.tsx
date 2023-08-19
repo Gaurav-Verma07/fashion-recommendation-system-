@@ -86,6 +86,7 @@ const ChoiceBased = () => {
           result: res?.openai?.items,
           isSearched: true,
           isPrompt: false,
+          searchPrompt: `${searchData.color} ${searchData.brand} ${searchData.type} ${searchData.gender}`,
         });
         setIsLoading(false);
       });

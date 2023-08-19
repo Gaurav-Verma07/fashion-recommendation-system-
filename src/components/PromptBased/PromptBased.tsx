@@ -21,6 +21,7 @@ const PromptBased = () => {
           result: res?.openai?.items,
           isSearched: true,
           isPrompt: false,
+          searchPrompt: prompt,
         });
         setIsLoading(false);
       });

@@ -11,6 +11,7 @@ function App() {
     result: {},
     isSearched: false,
     isPrompt: false,
+    searchPrompt: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageRef, setImageRef] = useState<string>("");

@@ -6,6 +6,7 @@ export interface DataProps {
     result: any;
     isSearched: boolean;
     isPrompt: boolean;
+    searchPrompt: string;
   };
   isLoading: boolean;
   setIsLoading: Dispatch<SetStateAction<DataProps["isLoading"]>>;
@@ -15,7 +16,7 @@ export interface DataProps {
 }
 
 const DataContext = React.createContext<DataProps>({
-  data: { result: [], isSearched: false, isPrompt: false },
+  data: { result: [], isSearched: false, isPrompt: false, searchPrompt: "" },
   setData: () => {},
   isLoading: true,
   setIsLoading: () => {},
