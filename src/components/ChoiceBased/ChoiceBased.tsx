@@ -197,7 +197,7 @@ const ChoiceBased = () => {
             data={tagData.gender}
           />
         </div>
-        <Button color="grape" onClick={searchHandler} mt={40}>
+        <Button  onClick={searchHandler} mt={40} sx={{background: 'linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)'}} >
           {isLoading ? <Loader color="white" variant="dots" /> : "Generate"}
         </Button>
       </div>

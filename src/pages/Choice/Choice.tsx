@@ -34,7 +34,7 @@ const Choice = () => {
       {searchType === "CHOICE" && <ChoiceBased />}
       {searchType === "PROMPT" && <PromptBased />}
       {searchType === "CHAT" && <Textbased />}
-      {data.isSearched && <AllClothes />}
+      {(data.isSearched && searchType!=='CHAT') && <AllClothes />}
     </div>
   );
 };
