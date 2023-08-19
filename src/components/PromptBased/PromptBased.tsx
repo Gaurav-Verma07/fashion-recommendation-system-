@@ -2,14 +2,17 @@
 import { useState, useContext } from "react";
 import DataContext from "../../context/dataContext";
 import classes from "./promptBased.module.css";
-import { Title, Textarea, Button  } from "@mantine/core";
+import { Title, Textarea, Button } from "@mantine/core";
 import { edenAIApi } from "../../utils/edenAIApi";
 
 const PromptBased = () => {
-  const [prompt, setPrompt] = useState<string>("");
+  const [prompt, setPrompt] = useState<string>(
+    localStorage.getItem("prompt") || ""
+  );
   const { setData, setIsLoading } = useContext(DataContext);
 
   const handleSearch = () => {
+    localStorage.setItem("prompt", prompt);
     try {
       setIsLoading(true);
       edenAIApi(prompt).then((res) => {
@@ -40,6 +43,7 @@ const PromptBased = () => {
             description="What do you want to wear, you can use a single word or complete sentence"
             withAsterisk
             autosize
+            value={prompt}
             minRows={6}
             onChange={(e: any) => {
               setPrompt(e.target.value);
