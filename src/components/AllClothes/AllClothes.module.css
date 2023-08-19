@@ -17,6 +17,7 @@
     margin-top: 16px;
     height: 256px;
     width: 256px;
+    border: 1px dotted #717171;
 }
 
 .results{
