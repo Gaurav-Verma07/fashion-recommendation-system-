@@ -91,11 +91,11 @@ const ChoiceBased = () => {
           searchPrompt: `${searchData.color} ${searchData.brand} ${searchData.type} ${searchData.gender}`,
         });
         setAllData((prev) => [
-          ...prev,
           {
             images: res?.openai?.items,
             prompt: `${searchData.type}, ${searchData.color}, ${searchData.brand}, ${searchData.gender}`,
           },
+          ...prev,
         ]);
         setIsLoading(false);
       });

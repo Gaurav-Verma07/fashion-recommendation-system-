@@ -4,6 +4,7 @@ import ChoiceBased from "../../components/ChoiceBased/ChoiceBased";
 import PromptBased from "../../components/PromptBased/PromptBased";
 import AllClothes from "../../components/AllClothes/AllClothes";
 import DataContext from "../../context/dataContext";
+import Textbased from "../../components/TextBased/TextBased";
 
 const Choice = () => {
   const [searchType, setSearchType] = useState("CHOICE");
@@ -24,13 +25,15 @@ const Choice = () => {
             setSearchType(value);
           }}
           data={[
-            { label: "Choice based", value: "CHOICE" },
-            { label: "Prompt based", value: "PROMPT" },
+            { label: "Use tags", value: "CHOICE" },
+            { label: "Design a prompt", value: "PROMPT" },
+            { label: "Chat with Us", value: "CHAT" },
           ]}
         />
       </div>
       {searchType === "CHOICE" && <ChoiceBased />}
       {searchType === "PROMPT" && <PromptBased />}
+      {searchType === "CHAT" && <Textbased />}
       {data.isSearched && <AllClothes />}
     </div>
   );
