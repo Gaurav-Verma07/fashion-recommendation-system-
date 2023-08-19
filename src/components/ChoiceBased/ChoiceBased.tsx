@@ -50,7 +50,28 @@ const brands = [
   "Michael Kors",
   "Coach",
 ];
-const type = ["Jeans", "Top", "Jewellary", "Shoes", "Goggles"];
+const type = [
+  "T-Shirt",
+  "Jeans",
+  "Blouse",
+  "Dress Shirt",
+  "Sweater",
+  "Shorts",
+  "Skirt",
+  "Leggings",
+  "Blazer",
+  "Hoodie",
+  "Jacket",
+  "Coat",
+  "Trousers",
+  "Swimsuit",
+  "Pajamas",
+  "Overalls",
+  "Jumpsuit",
+  "Tank Top",
+  "Socks",
+  "Shoes",
+];
 const gender = ["Male", "Female"];
 
 interface Choice {
@@ -73,9 +94,8 @@ const ChoiceBased = () => {
     type: "Jeans",
     gender: "Female",
   });
-  const { setData, setIsLoading, isLoading, setAllData } = useContext(
-    DataContext
-  );
+  const { setData, setIsLoading, isLoading, setAllData } =
+    useContext(DataContext);
 
   const searchHandler = () => {
     try {
