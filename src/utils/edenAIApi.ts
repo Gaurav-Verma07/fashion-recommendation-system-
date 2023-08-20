@@ -1,3 +1,5 @@
+import { EDENAI } from "../enums/eden";
+
 export const edenAIApi = async (prompt: string) => {
   const url = "https://api.edenai.run/v2/image/generation";
 
@@ -6,10 +8,10 @@ export const edenAIApi = async (prompt: string) => {
     "Content-Type": "application/json",
   };
   const data = {
-    providers: "openai",
+    providers: EDENAI.PROVIDERS,
     text: prompt,
-    resolution: "256x256",
-    num_images: 2,
+    resolution: EDENAI.RESOLUTION,
+    num_images: EDENAI.NUM_IMAGES,
   };
   try {
     const response = await fetch(url, {

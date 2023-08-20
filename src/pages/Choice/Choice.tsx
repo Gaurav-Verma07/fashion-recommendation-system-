@@ -5,9 +5,10 @@ import PromptBased from "../../components/PromptBased/PromptBased";
 import AllClothes from "../../components/AllClothes/AllClothes";
 import DataContext from "../../context/dataContext";
 import Textbased from "../../components/TextBased/TextBased";
+import { CHOICE } from "../../enums/choice";
 
 const Choice = () => {
-  const [searchType, setSearchType] = useState("CHOICE");
+  const [searchType, setSearchType] = useState<string>(CHOICE.TAGS);
   const { data, setData } = useContext(DataContext);
 
   return (
@@ -25,16 +26,16 @@ const Choice = () => {
             setSearchType(value);
           }}
           data={[
-            { label: "Use tags", value: "CHOICE" },
-            { label: "Design a prompt", value: "PROMPT" },
-            { label: "Chat with Us", value: "CHAT" },
+            { label: "Use tags", value: CHOICE.TAGS },
+            { label: "Design a prompt", value: CHOICE.PROMPT },
+            { label: "Chat with Us", value: CHOICE.CHAT },
           ]}
         />
       </div>
-      {searchType === "CHOICE" && <ChoiceBased />}
-      {searchType === "PROMPT" && <PromptBased />}
-      {searchType === "CHAT" && <Textbased />}
-      {(data.isSearched && searchType!=='CHAT') && <AllClothes />}
+      {searchType === CHOICE.TAGS && <ChoiceBased />}
+      {searchType === CHOICE.PROMPT && <PromptBased />}
+      {searchType === CHOICE.CHAT && <Textbased />}
+      {data.isSearched && searchType !== CHOICE.CHAT && <AllClothes />}
     </div>
   );
 };
