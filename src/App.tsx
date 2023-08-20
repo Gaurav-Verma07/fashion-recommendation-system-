@@ -7,6 +7,7 @@ import HeaderMain from "./components/Header/HeaderMain";
 import HomePage from "./pages/HomePage/HomePage";
 import Choice from "./pages/Choice/Choice";
 import Footer from "./components/Footer/footer";
+import { MantineProvider } from "@mantine/core";
 function App() {
   const [data, setData] = useState({
     result: {},
@@ -26,26 +27,28 @@ function App() {
 
   return (
     <div>
-      <HeaderMain />
-      <DataContext.Provider
-        value={{
-          data,
-          setData,
-          isLoading,
-          setIsLoading,
-          imageRef,
-          setImageRef,
-          allData,
-          setAllData,
-        }}
-      >
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/generate" element={<Choice />} />
-        </Routes>
-      </DataContext.Provider>
+      <MantineProvider>
+        <HeaderMain />
+        <DataContext.Provider
+          value={{
+            data,
+            setData,
+            isLoading,
+            setIsLoading,
+            imageRef,
+            setImageRef,
+            allData,
+            setAllData,
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/generate" element={<Choice />} />
+          </Routes>
+        </DataContext.Provider>
 
-      {location.pathname === "/" && <Footer />}
+        {location.pathname === "/" && <Footer />}
+      </MantineProvider>
     </div>
   );
 }
