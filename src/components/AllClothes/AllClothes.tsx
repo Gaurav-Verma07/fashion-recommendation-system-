@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import DataContext from "../../context/dataContext";
 import classes from "./AllClothes.module.css";
 import CustomImage from "./CustomImage";
@@ -7,13 +7,12 @@ import { Button, Loader, Text } from "@mantine/core";
 import { edenAIApi } from "../../utils/edenAIApi";
 
 const AllClothes = () => {
-  const { allData, setAllData, setIsLoading, isLoading } = useContext(
-    DataContext
-  );
+  const { allData, setAllData } = useContext(DataContext);
+  const [isLoadMore, setIsLoadMore] = useState<boolean>(false);
 
   const loadMoreHandler = (loadPrompt: string) => {
     try {
-      setIsLoading(true);
+      setIsLoadMore(true);
       edenAIApi(loadPrompt).then((res) => {
         console.log({ res });
         const newData: any = allData.map((data) => {
@@ -27,7 +26,7 @@ const AllClothes = () => {
         });
         setAllData(newData);
         console.log({ newData });
-        setIsLoading(false);
+        setIsLoadMore(false);
       });
     } catch (err) {
       console.log({ err });
@@ -61,7 +60,7 @@ const AllClothes = () => {
                 }}
                 className={classes.loadMore}
               >
-                {isLoading ? (
+                {isLoadMore ? (
                   <Loader color="white" variant="dots" />
                 ) : (
                   "Load More"

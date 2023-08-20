@@ -9,7 +9,7 @@ const PromptBased = () => {
   const [prompt, setPrompt] = useState<string>(
     localStorage.getItem("prompt") || ""
   );
-  const { setData, setIsLoading, isLoading, setAllData } = useContext(
+  const {  setIsLoading, isLoading, setAllData } = useContext(
     DataContext
   );
 
@@ -19,12 +19,6 @@ const PromptBased = () => {
       setIsLoading(true);
       edenAIApi(prompt).then((res) => {
         console.log({ res });
-        setData({
-          result: res?.openai?.items,
-          isSearched: true,
-          isPrompt: false,
-          searchPrompt: prompt,
-        });
         setAllData((prev) => [
           {
             images: res?.openai?.items,

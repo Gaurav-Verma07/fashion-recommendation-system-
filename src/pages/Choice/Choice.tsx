@@ -1,15 +1,13 @@
-import { useState, useContext } from "react";
+import { useState} from "react";
 import { SegmentedControl } from "@mantine/core";
 import ChoiceBased from "../../components/ChoiceBased/ChoiceBased";
 import PromptBased from "../../components/PromptBased/PromptBased";
 import AllClothes from "../../components/AllClothes/AllClothes";
-import DataContext from "../../context/dataContext";
 import Textbased from "../../components/TextBased/TextBased";
 import { CHOICE } from "../../enums/choice";
 
 const Choice = () => {
   const [searchType, setSearchType] = useState<string>(CHOICE.TAGS);
-  const { data, setData } = useContext(DataContext);
 
   return (
     <div>
@@ -19,10 +17,6 @@ const Choice = () => {
           radius="lg"
           color="blue"
           onChange={(value: string) => {
-            setData((prev) => ({
-              ...prev,
-              isPrompt: false,
-            }));
             setSearchType(value);
           }}
           data={[
@@ -35,7 +29,7 @@ const Choice = () => {
       {searchType === CHOICE.TAGS && <ChoiceBased />}
       {searchType === CHOICE.PROMPT && <PromptBased />}
       {searchType === CHOICE.CHAT && <Textbased />}
-      {data.isSearched && searchType !== CHOICE.CHAT && <AllClothes />}
+      {searchType !== CHOICE.CHAT && <AllClothes />}
     </div>
   );
 };

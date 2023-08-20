@@ -94,8 +94,7 @@ const ChoiceBased = () => {
     type: "Jeans",
     gender: "Female",
   });
-  const { setData, setIsLoading, isLoading, setAllData } =
-    useContext(DataContext);
+  const { setIsLoading, isLoading, setAllData } = useContext(DataContext);
 
   const searchHandler = () => {
     try {
@@ -104,12 +103,6 @@ const ChoiceBased = () => {
         `Get me a ${searchData.type} of ${searchData.color} brand of ${searchData.brand} brand for a ${searchData.gender}`
       ).then((res) => {
         console.log({ res });
-        setData({
-          result: res?.openai?.items,
-          isSearched: true,
-          isPrompt: false,
-          searchPrompt: `${searchData.color} ${searchData.brand} ${searchData.type} ${searchData.gender}`,
-        });
         setAllData((prev) => [
           {
             images: res?.openai?.items,
@@ -217,7 +210,11 @@ const ChoiceBased = () => {
             data={tagData.gender}
           />
         </div>
-        <Button  onClick={searchHandler} mt={40} sx={{background: 'linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)'}} >
+        <Button
+          onClick={searchHandler}
+          mt={40}
+          sx={{ background: "linear-gradient(90deg,#04a0f4,#11b7da,#23d5b8)" }}
+        >
           {isLoading ? <Loader color="white" variant="dots" /> : "Generate"}
         </Button>
       </div>

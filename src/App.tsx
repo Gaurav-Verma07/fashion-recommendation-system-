@@ -9,12 +9,6 @@ import Choice from "./pages/Choice/Choice";
 import Footer from "./components/Footer/footer";
 import { MantineProvider } from "@mantine/core";
 function App() {
-  const [data, setData] = useState({
-    result: {},
-    isSearched: false,
-    isPrompt: false,
-    searchPrompt: "",
-  });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageRef, setImageRef] = useState<string>("");
   const location = useLocation();
@@ -31,8 +25,6 @@ function App() {
         <HeaderMain />
         <DataContext.Provider
           value={{
-            data,
-            setData,
             isLoading,
             setIsLoading,
             imageRef,
