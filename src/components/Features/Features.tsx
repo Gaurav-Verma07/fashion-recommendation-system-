@@ -7,7 +7,7 @@ const Features = () => {
     <Stack className={classes.container}>
       {data.map((content, index) => (
         <Flex className={classes.card} key={index} justify="space-around" align="center">
-          <Box sx={{ order: index % 2 == 0 ? 0 : 2 }}>
+          <Box sx={{ order: index % 2 == 0 ? 0 : 2, padding: '10px' }}>
             <Image width={300} height={300} src={content.logo} />
           </Box>
           <Box>
